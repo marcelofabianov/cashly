@@ -13,7 +13,7 @@ services:
       GOOSE_DRIVER: "postgres"
       GOOSE_DBSTRING: "postgres://username:password@cashly-db:5432/cashly-db?sslmode=disable"
     ports:
-      - "8081:8081"
+      - "50051:50051"
     depends_on:
       - cashly-db
     networks:

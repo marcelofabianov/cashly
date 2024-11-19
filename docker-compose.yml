@@ -1,0 +1,51 @@
+name: "cashly"
+
+services:
+  cashly-api:
+    container_name: cashly-api
+    image: "marcelofabianov/cashly-api:latest"
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      GOOSE_MIGRATION_DIR: "/app/db/migrations"
+      GOOSE_DRIVER: "postgres"
+      GOOSE_DBSTRING: "postgres://username:password@cashly-db:5432/cashly-db?sslmode=disable"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - cashly-db
+    networks:
+      - cashly-network
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  cashly-db:
+    container_name: cashly-db
+    restart: always
+    image: "postgres:16.2"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cashly-db
+    volumes:
+      - cashly-data:/var/lib/postgresql/data:rw
+    networks:
+      - cashly-network
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U username -d cashly-db'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  cashly-data:
+    driver: local
+
+networks:
+  cashly-network:
+    driver: bridge

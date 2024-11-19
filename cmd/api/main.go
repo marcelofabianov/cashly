@@ -38,25 +38,5 @@ func run() error {
 	app := app.NewApp(cfg, db.Conn())
 	app.Build()
 
-	// var createUserUseCase inbound.CreateUserUseCase
-	// if err := app.Identity.Invoke(func(uc inbound.CreateUserUseCase) {
-	// 	createUserUseCase = uc
-	// }); err != nil {
-	// 	slog.Error("error getting CreateUserUseCase", "error", err)
-	// }
-
-	// user, err := createUserUseCase.Execute(ctx, inbound.CreateUserUseCaseInput{
-	// 	IdentityDocument: core.IdentityDocument("465464654646"),
-	// 	Name:             "Marcelo",
-	// 	Email:            core.Email("marcelo@email.com"),
-	// 	Password:         "password",
-	// })
-	// if err != nil {
-	// 	slog.Error("error creating user", "error", err)
-	// 	return err
-	// }
-
-	// slog.Info("user created", "user", user.User.ID.Int())
-
 	return nil
 }

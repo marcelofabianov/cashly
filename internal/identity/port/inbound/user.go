@@ -41,8 +41,8 @@ type CreateUserRepositoryOutput struct {
 }
 
 type UserExistsRepositoryInput struct {
-	Email              core.Email
-	IdentitiesDocument core.IdentityDocument
+	Email            core.Email
+	IdentityDocument core.IdentityDocument
 }
 
 type CreateUserRepository interface {
@@ -59,7 +59,7 @@ type CreateUserUseCaseInput struct {
 	Password         string
 }
 
-type CreateUserUseCaseOutput struct{
+type CreateUserUseCaseOutput struct {
 	User *domain.User
 }
 

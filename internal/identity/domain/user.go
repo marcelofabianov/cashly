@@ -5,7 +5,6 @@ import "github.com/marcelofabianov/cashly/internal/core"
 type User struct {
 	ID               core.ID
 	PublicID         core.PublicID
-	OwershipID       core.OwnershipID
 	IdentityDocument core.IdentityDocument
 	Name             string
 	Email            core.Email
@@ -17,11 +16,10 @@ type User struct {
 	Version          core.Version
 }
 
-func NewUser(ownershipID core.OwnershipID, identityDocument core.IdentityDocument, name string, email core.Email, password string) *User {
+func NewUser(identityDocument core.IdentityDocument, name string, email core.Email, password string) *User {
 	return &User{
 		ID:               core.NewID(),
 		PublicID:         core.NewPublicID(),
-		OwershipID:       ownershipID,
 		IdentityDocument: identityDocument,
 		Name:             name,
 		Email:            email,
@@ -37,7 +35,6 @@ func NewUser(ownershipID core.OwnershipID, identityDocument core.IdentityDocumen
 func NewFromUser(
 	id core.ID,
 	publicID core.PublicID,
-	ownershipID core.OwnershipID,
 	identityDocument core.IdentityDocument,
 	name string,
 	email core.Email,
@@ -51,7 +48,6 @@ func NewFromUser(
 	return &User{
 		ID:               id,
 		PublicID:         publicID,
-		OwershipID:       ownershipID,
 		IdentityDocument: identityDocument,
 		Name:             name,
 		Email:            email,

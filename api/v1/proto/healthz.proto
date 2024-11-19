@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package healthz;
+
+option go_package = "github.com/marcelofabianov/cashly/api/v1/gen";
+
+service Healthz {
+  rpc Check(CheckRequest) returns (CheckResponse);
+}
+
+message CheckRequest {
+  string token = 1;
+}
+
+message CheckResponse {
+  string status = 1;
+  string message = 2;
+}

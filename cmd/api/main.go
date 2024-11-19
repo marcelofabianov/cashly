@@ -3,7 +3,9 @@ package main
 import "log/slog"
 
 func main() {
-	slog.Info("Starting...")
+	run()
+
+	slog.Info("API is running")
 }
 
 func run() error {

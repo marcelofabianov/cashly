@@ -30,6 +30,7 @@ func NewIdentityContainer(cfg *config.Config, db *sql.DB) *IdentityContainer {
 func (c *IdentityContainer) Build() {
 	c.registerPackages()
 	c.registerRepository()
+	c.registerUseCase()
 }
 
 func (c *IdentityContainer) registerPackages() {
